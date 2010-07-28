@@ -8,3 +8,4 @@
 /public/system
 /tmp/*
 /tags
+/db/*sqlite3
