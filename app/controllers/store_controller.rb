@@ -2,9 +2,18 @@ class StoreController < ApplicationController
   def index
 		@products = Product.find_products_for_sale
 		@time = Time.now
+		@count = increment_count
   end
 
+	def increment_count
+		if session[:counter].nil?
+			session[:counter] = 0
+		end
+		session[:counter] += 1
+	end
+
 	def add_to_cart
+		session[:counter] = 0
 		product = Product.find(params[:id])
 		@cart = find_cart
 		@cart.add_product(product)

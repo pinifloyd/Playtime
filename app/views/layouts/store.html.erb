@@ -16,8 +16,9 @@
 			<a href="http://www..../faq">Questions</a><br />
 			<a href="http://www..../news">News</a><br />
 			<a href="http://www..../contact">Contact</a><br />
-			The was open at <%= @time %><br />
-		</div>
+			The was opened at <%= @time %><br />
+			<%= "Store was opened " +  pluralize(@count, "time") if @count != nil && @count > 5 %><br />
+	</div>
 		<div id="main">
 			<% if flash[:notice] -%>
 				<div id="notice"><%= flash[:notice] %></div>
