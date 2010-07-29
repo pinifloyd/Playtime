@@ -6,8 +6,12 @@ class Product < ActiveRecord::Base
 	validates_numericality_of :price
 	validate :price_must_be_at_least_a_cent
 	validates_uniqueness_of :title
-
+	
 	has_attached_file :picture, :styles => { :small => "100x100>" }
+
+	validates_attachment_presence :picture
+	validates_attachment_size :picture, :less_than => 1.megabytes
+	validates_attachment_content_type :picture, :content_type => ['image/gif', 'image/png', 'image/jpeg']
 
 	def self.find_products_for_sale
 		find(:all, :order => "title")
