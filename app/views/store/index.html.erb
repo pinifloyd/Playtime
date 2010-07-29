@@ -1,7 +1,7 @@
 <h1>Your Pragmatic Catalog</h1>
 <% for product in @products -%>
   <div class="entry">
-    <%= link_to image_tag(product.image_url), :action => :add_to_cart %>
+    <%= link_to image_tag(product.picture.url), :action => :add_to_cart %>
     <h3><%=h product.title %></h3>
     <%= product.description %>
     <div class="price-line">
