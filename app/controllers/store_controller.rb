@@ -6,9 +6,7 @@ class StoreController < ApplicationController
   end
 
 	def increment_count
-		if session[:counter].nil?
-			session[:counter] = 0
-		end
+		session[:counter] ||= 0
 		session[:counter] += 1
 	end
 
