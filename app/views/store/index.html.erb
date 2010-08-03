@@ -8,7 +8,8 @@
     <span class="price"><%= number_to_currency(product.price, :unit => "$") %></span>
 		<% form_remote_tag :url => { :action => 'add_to_cart', :id => product } do %>
 			<%= submit_tag "Add to Cart" %>
-		<% end %>    
+		<% end %>   
+		<%= button_to "Comments", :controller => 'products/show', :action => product.id %> 
 		</div>
   </div>
 <% end %>

@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :price, :picture
+  attr_accessible :title, :description, :price, :picture, :comment_id
 	
 	validates_presence_of :title, :description
 	validates_length_of :title, :maximum => 10, :message => "has more than 10 simbols"
@@ -16,7 +16,8 @@ class Product < ActiveRecord::Base
 	def self.find_products_for_sale
 		find(:all, :order => "title")
 	end
-
+	
+	belongs_to :comment
 protected
 	def price_must_be_at_least_a_cent
 		errors.add(:price, 'should be at least 0.01') if price.nil? || price < 0.01

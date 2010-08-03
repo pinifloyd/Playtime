@@ -22,3 +22,13 @@
   <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", products_path %>
 </p>
+
+<p>
+	<strong>Comments</strong><br>
+
+<% (@product.comment.level+1).times do %>
+	<%= '<ol>' * @product.comment.level %>
+	<%= @product.comment.name %> : 	<%= @product.comment.comment_body %>
+	<%= button_to "Answer", :controller => 'comments', :action => 'new' %><br>
+<% end %>
+</p>
