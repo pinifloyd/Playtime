@@ -1,0 +1,11 @@
+  <strong>Comments</strong><br/>
+  <ul>
+    <% @product.comments.each do |comment| %>
+      <li>
+        <%= comment.name %>
+        <%= comment.comment_body %>
+        <%= link_to "Answer", new_product_comment_path(@product, :reply_to => comment.id) %><br/>
+      </li>
+    <% end %>
+  </ul>
+  

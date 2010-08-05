@@ -11,12 +11,8 @@
     <%= f.text_area :comment_body, :rows => 5, :cols => 35 %>
   </p>
   <p>
-    <%= f.label "product id" %><br/>
-    <%= f.text_field :product_id %>
-  </p>
-  <p>
-    <%#= f.label :parent_id %><br />
-    <%#= f.hidden :parent_id %>
+    <%= f.label :parent_id %><br />
+    <%= f.text_field :parent_id, :value => params[:reply_to] %>
   </p>
   <p>
     <%= f.submit 'Create' %>

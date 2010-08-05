@@ -25,15 +25,8 @@
 
 
 <div>
-  <strong>Comments</strong><br/>
-  <ul>
-    <% @product.comments.each do |comment| %>
-      <li>
-        <%= comment.name %>
-        <%= comment.comment_body %>
-        <%= link_to "Answer" %><br/>
-      </li>
-    <% end %>
-  </ul>
+  <% if @product.comments.any? %>
+    <%= render(:partial => "comment", :object => @product.comments) %>
+  <% end %>
   <%= link_to "New comment", new_product_comment_path(@product) %>
 </div>

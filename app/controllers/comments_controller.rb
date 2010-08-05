@@ -31,7 +31,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
+    @product = Product.find(params[:product_id])
+    @comment = @product.comments.new(params[:comment])
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(product_path(@comment.product), :notice => 'Comment was successfully created.') }
