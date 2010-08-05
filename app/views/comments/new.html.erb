@@ -1,30 +1,26 @@
 <h1>New comment</h1>
-
-<% form_for(@comment) do |f| %>
+<% form_for [@product, @comment] do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-	<p>
-		<%= f.label "text" %><br>
-		<%= f.text_area :comment_body, :rows => 5, :cols => 35 %>
   <p>
-    <%= f.label :parent_id %><br />
-    <%= f.select :parent_id, nested_set_options(Comment, @comment) {|i| "#{'-' * i.level} #{i.name}" } %>
+    <%= f.label "text" %><br/>
+    <%= f.text_area :comment_body, :rows => 5, :cols => 35 %>
   </p>
   <p>
-    <%= f.label :lft %><br />
-    <%= f.text_field :lft %>
+    <%= f.label "product id" %><br/>
+    <%= f.text_field :product_id %>
   </p>
   <p>
-    <%= f.label :rgt %><br />
-    <%= f.text_field :rgt %>
+    <%#= f.label :parent_id %><br />
+    <%#= f.hidden :parent_id %>
   </p>
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back' %>

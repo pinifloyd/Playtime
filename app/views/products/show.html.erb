@@ -13,22 +13,19 @@
   <%=h @product.picture.url %>
 </p>
 <p>
-	<strong>Price:</strong>
-	<%= number_to_currency(@product.price) %>
+  <strong>Price:</strong>
+  <%= number_to_currency(@product.price) %>
 </p>
 
 <p>
   <%= link_to "Edit", edit_product_path(@product) %> |
   <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", products_path %>
+  <%= link_to "View All", products_path %> | 
+  <%= link_to "New comment", new_product_comment_path(@product) %>
 </p>
 
 <p>
-	<strong>Comments</strong><br>
-
-<% (@product.comment.level+1).times do %>
-	<%= '<ol>' * @product.comment.level %>
-	<%= @product.comment.name %> : 	<%= @product.comment.comment_body %>
-	<%= button_to "Answer", :controller => 'comments', :action => 'new' %><br>
-<% end %>
+  <strong>Comments</strong><br/>
+<div><%= @product.comments.all.map(&:comment_body).join('</div><div>') %></div>
+<%= link_to "Answer" %><br/>
 </p>

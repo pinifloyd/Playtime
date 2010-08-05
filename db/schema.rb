@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20100803084840) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",                :default => 0.0
+    t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"

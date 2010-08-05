@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-	has_many :products
+	belongs_to :product
 	
 	acts_as_nested_set
   def path_name
