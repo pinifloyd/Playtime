@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20100803084840) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.integer  "comment_id"
   end
 
   create_table "sessions", :force => true do |t|

@@ -20,13 +20,16 @@
 <p>
   <%= link_to "Edit", edit_product_path(@product) %> |
   <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", products_path %> | 
+  <%= link_to "View All", products_path %>
 </p>
 
 
 <div>
-  <% if @product.comments.any? %>
-    <%= render(:partial => "comment", :object => @product.comments) %>
-  <% end %>
-  <%= link_to "New comment", new_product_comment_path(@product) %>
+	<% if @product.comments.any? %>
+	<h1>Comments</h1>
+  <ul>
+    <%= render :partial => "comment", :locals => {:product => @product, :comments => @product.comments}, :collection => @product.comments.select{|c| c.root?} %>
+  </ul>
+	<% end %>
+<%= link_to "New comment", new_product_comment_path(@product) %>
 </div>

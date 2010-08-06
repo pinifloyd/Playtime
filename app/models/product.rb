@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :price, :picture, :comment_id
+  attr_accessible :title, :description, :price, :picture
 	
 	validates_presence_of :title, :description
 	validates_length_of :title, :maximum => 10, :message => "has more than 10 simbols"
