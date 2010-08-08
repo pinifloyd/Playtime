@@ -9,7 +9,7 @@
 		<% form_remote_tag :url => { :action => 'add_to_cart', :id => product } do %>
 			<%= submit_tag "Add to Cart" %>
 		<% end %>   
-		<%= button_to "Comments", :controller => 'products/show', :action => product.id %> 
+		<%= button_to "Comments", :controller => 'products/show', :action => product.id %>
 		</div>
   </div>
 <% end %>
