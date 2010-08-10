@@ -36,10 +36,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(product_path(@comment.product), :notice => 'Comment was successfully created.') }
-        
+        format.js
       else
         format.html { render :action => "new" }
-
+        format.js
       end
     end
   end

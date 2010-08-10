@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
     product.resources :comments, :except => [:index, :show]
   end
 
+  map.root :controller => :store
+
 	map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -24,12 +24,32 @@
 </p>
 
 
-<div>
-	<% if @product.comments.any? %>
-	<h1>Comments</h1>
+<div id="com">
+  <% if @product.comments.any? %>
+  <h1>Comments</h1>
   <ul>
     <%= render :partial => "comment", :locals => {:product => @product, :comments => @product.comments}, :collection => @product.comments.select{|c| c.root?} %>
   </ul>
 	<% end %>
-<%= link_to "New comment", new_product_comment_path(@product) %>
+</div>
+
+<div>
+  <h1>New comment</h1>
+<% form_remote_for [@product, @product.comments.new] do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label "text" %><br/>
+    <%= f.text_area :comment_body, :rows => 5, :cols => 35 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back' %>
 </div>
