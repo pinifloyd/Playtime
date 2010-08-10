@@ -23,15 +23,7 @@
   <%= link_to "View All", products_path %>
 </p>
 
-
-<div id="com">
-  <% if @product.comments.any? %>
-  <h1>Comments</h1>
-  <ul>
-    <%= render :partial => "comment", :locals => {:product => @product, :comments => @product.comments}, :collection => @product.comments.select{|c| c.root?} %>
-  </ul>
-	<% end %>
-</div>
+<%= render :partial => "comment_list" %>
 
 <div>
   <h1>New comment</h1>

@@ -3,6 +3,6 @@
 	<%= comment.comment_body %><br/>
 	<%= link_to "Answer", new_product_comment_path(@product, :reply_to => comment.id) %><br/><br/>
 	<ul>
-		<%= render :partial => "comment", :collection => comment.children %>
+		<%= render :partial => "comments/comment", :collection => comment.children %>
 	</ul>
 </li>
