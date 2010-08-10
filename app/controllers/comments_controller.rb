@@ -21,6 +21,10 @@ class CommentsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @comment = @product.comments.new
+    respond_to do |format|
+      format.html
+      format.js { render :partial => '/comments/new' }
+    end
   end
 
   # GET /comments/1/edit
@@ -35,7 +39,7 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(params[:comment])
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(product_path(@comment.product), :notice => 'Comment was successfully created.') }
+        format.html { redirect_to(product_path(@comment.product), :notice => 'Comment was successfully created.')}
         format.js
       else
         format.html { render :action => "new" }

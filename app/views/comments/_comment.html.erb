@@ -1,7 +1,12 @@
 <li>
   <strong><%= comment.name %> write <%= comment.created_at %></strong><br/>
 	<%= comment.comment_body %><br/>
-	<%= link_to "Answer", new_product_comment_path(@product, :reply_to => comment.id) %><br/><br/>
+	<%= link_to_remote "Answer", 
+                           :update => "reply-#{dom_id(comment)}",
+                           :url => new_product_comment_path(comment.product, :reply_to => comment.id),
+                           :method => :get %>
+        <br/><br/>
+        <%= content_tag :div, '', :id => "reply-#{dom_id(comment)}" %>
 	<ul>
 		<%= render :partial => "comments/comment", :collection => comment.children %>
 	</ul>

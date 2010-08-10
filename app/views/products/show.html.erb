@@ -23,13 +23,12 @@
   <%= link_to "View All", products_path %>
 </p>
 
-<%= render :partial => "comment_list" %>
+<%= render :partial => 'comments/comment_list' %>
 
 <div>
   <h1>New comment</h1>
 <% form_remote_for [@product, @product.comments.new] do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
