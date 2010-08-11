@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
 	config.gem 'paperclip'
 	config.gem 'awesome_nested_set'
 	config.gem 'jrails'
+  config.gem 'haml'
 	
   config.time_zone = 'UTC'
 end

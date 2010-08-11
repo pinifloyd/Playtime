@@ -1,0 +1,22 @@
+#product-list
+  %h1 Listing products
+  %table
+    - @products.each do |product|
+      %tr{:class => "#{cycle('list-line-odd', 'list-line-even')}" }
+        %td
+          = image_tag product.picture.url(:small)
+          %td.list-description
+            %dl
+              %dt
+                = "#{h product.title }"
+              %dd
+                = "#{h truncate(product.description.gsub(/<.*?>/,''), :length => 100)}"
+          %td.list-actions
+            = link_to 'Show', product
+            %br
+            = link_to 'Edit', edit_product_path(product)
+            %br
+            = link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
+          %br
+%p
+  = link_to "New Product", new_product_path
