@@ -1,0 +1,12 @@
+%p
+  %b= "Name:"
+  =h @user.name
+%p
+  %b= "Hashed password:"
+  =h @user.hashed_password
+%p
+  %b= "Salt:"
+  =h @user.salt
+= link_to 'Edit', edit_user_path(@user)
+= " | "
+= link_to 'Back', users_path
