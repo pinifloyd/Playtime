@@ -11,8 +11,21 @@
         ="Pragmatic Bookshelf"
       #columns
         #side
-          - hidden_div_if(@cart.items.empty?, :id => "cart") do
-            = render(:partial => "cart", :object => @cart)
+          - if @cart
+            - hidden_div_if(@cart.items.empty?, :id => "cart") do
+              = render(:partial => "cart", :object => @cart)
+          - if session[:user_id]
+            %br
+            = link_to 'Orders', :controller => 'orders'
+            %br
+            = link_to 'Products', :controller => 'products'
+            %br
+            = link_to 'Users', :controller => 'users'
+            %br
+            = link_to 'Store', :controller => 'store'
+            %br
+            %br
+            = link_to 'Logout', :controller => 'admin', :action => 'logout'
           %br
           = "The was opened at #{@time}"
           %br

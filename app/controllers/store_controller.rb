@@ -56,6 +56,10 @@ class StoreController < ApplicationController
 			render :action => 'checkout'
 		end
 	end
+
+protected
+  def authorize
+  end
 	
 private
 	def redirect_to_index(msg = nil)
@@ -64,6 +68,6 @@ private
 	end
 
 	def find_cart
-		session[:cart] ||= Cart.new
+		@cart = (session[:cart] ||= Cart.new)
 	end
 end
