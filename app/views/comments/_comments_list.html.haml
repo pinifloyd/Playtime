@@ -11,6 +11,8 @@
         = link_to_function "Answer", "$(this).next().toggle()"
         %div{:id => "reply_to_comment_#{comment.id}", :style => "display:none"}
           = render :partial => 'comments/new', :locals => { :reply_to => comment.id, :comment => @product.comments.new }
+        %br
+        %br
         
 %h1 New comment
 %div{:id => "reply_to_comment_#{@product.comments.first.id}" }

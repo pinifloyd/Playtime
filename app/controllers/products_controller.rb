@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
       comment = Comment.create(:product_id => @product.id, :name => "root", :comment_body => "root")
       redirect_to @product
     else
-      render :action => 'new'
+      render 'products/new'
     end
   end
   

@@ -60,7 +60,7 @@ form.formtastic fieldset > ol > li.error { }
 
 /* LABELS
 --------------------------------------------------------------------------------------------------*/
-form.formtastic fieldset > ol > li label { display:block; width:25%; float:left; padding-top:.2em; }
+form.formtastic fieldset > ol > li label { display:block; width:13%; float:left; padding-top:.2em; }
 form.formtastic fieldset > ol > li > li label { line-height:100%; padding-top:0; }
 form.formtastic fieldset > ol > li > li label input { line-height:100%; vertical-align:middle; margin-top:-0.1em;}
 
@@ -89,14 +89,14 @@ form.formtastic fieldset > ol > li ul.errors li { padding:0; border:none; displa
 
 /* STRING & NUMERIC OVERRIDES
 --------------------------------------------------------------------------------------------------*/
-form.formtastic fieldset > ol > li.string input { max-width:74%; }
+form.formtastic fieldset > ol > li.string input { max-width:30%; }
 form.formtastic fieldset > ol > li.password input { max-width: 13em; }
-form.formtastic fieldset > ol > li.numeric input { max-width:74%; }
+form.formtastic fieldset > ol > li.numeric input { max-width:30%; }
 
 
 /* TEXTAREA OVERRIDES
 --------------------------------------------------------------------------------------------------*/
-form.formtastic fieldset > ol > li.text textarea { width:74%; }
+form.formtastic fieldset > ol > li.text textarea { width:30%; height:100px;}
 
 
 /* HIDDEN OVERRIDES
