@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
         format.js
       else
         format.html { render :action => "new" }
-        format.js
+        format.js {render :partial => 'create_failed', :locals => {:comment => @comment}}
       end
     end
   end

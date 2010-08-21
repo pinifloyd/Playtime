@@ -1,0 +1,17 @@
+%div#product_comments
+  %ul
+    - product.comments.each_with_level(product.comments.root.descendants) do |comment, level|
+      %li{:style => "padding-left:#{15*level}px;"}
+        = comment.name 
+        = "write at" 
+        = comment.created_at
+        %br
+        = comment.comment_body
+        %br
+        = link_to_function "Answer", "$(this).next().toggle()"
+        %div{:id => "reply_to_comment_#{comment.id}", :style => "display:none"}
+          = render :partial => 'comments/new', :locals => { :reply_to => comment.id, :comment => @product.comments.new }
+        
+%h1 New comment
+%div{:id => "reply_to_comment_#{@product.comments.first.id}" }
+  = render :partial => 'comments/new', :locals => { :comment => @product.comments.new }

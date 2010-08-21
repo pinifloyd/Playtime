@@ -9,3 +9,4 @@
 /tmp/*
 /tags
 /db/*sqlite3
+/.redcar
