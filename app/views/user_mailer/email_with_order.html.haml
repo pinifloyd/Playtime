@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}
+  %body
+    %h1= "Добрый день, #{@order.name}"
+    Вы заказали:
+    - @cart.items.each do |item|
+      = "#{item.quantity} x #{item.product.title}, цена за штуку: #{number_to_currency(item.product.price)}"
+    %br
+    = "Итого: #{number_to_currency(@cart.items.sum{|item| item.price})}"
+    %br
+    = "Ваш заказ будет доставлен по адресу: #{@order.address}"
+    %br
+    = "Способ оплаты: #{@order.pay_type}"

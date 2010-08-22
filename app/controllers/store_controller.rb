@@ -50,6 +50,7 @@ class StoreController < ApplicationController
 		@order = Order.new(params[:order])
 		@order.add_line_items_from_cart(@cart)
 		if @order.save
+      UserMailer.deliver_email_with_order(@order, @cart)
 			session[:cart] = nil
 			redirect_to_index("Thank you for your order")
 		else
