@@ -14,7 +14,7 @@
           - if @cart
             - hidden_div_if(@cart.items.empty?, :id => "cart") do
               = render(:partial => "cart", :object => @cart)
-          - if session[:user_id]
+          - if current_user 
             %br
             = link_to 'Orders', :controller => 'orders'
             %br
