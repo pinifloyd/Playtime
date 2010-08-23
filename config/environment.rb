@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
 	config.gem 'awesome_nested_set'
 	config.gem 'jrails'
   config.gem 'haml'
+  config.gem 'authlogic'
 	
   config.time_zone = 'UTC'
 end

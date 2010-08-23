@@ -3,17 +3,23 @@
 
 class ApplicationController < ActionController::Base
   layout "store"
-  before_filter :authorize, :except => :login
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-protected
-  def authorize
-    unless User.find_by_id(session[:user_id])
-        flash[:notice] = "Please log in"
-        redirect_to :controller => 'admin', :action => 'login'
-    end
+
+  helper_method :current_user
+  
+  private
+  
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
+  
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.record
   end
 end

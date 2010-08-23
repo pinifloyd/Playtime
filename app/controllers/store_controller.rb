@@ -59,8 +59,6 @@ class StoreController < ApplicationController
 	end
 
 protected
-  def authorize
-  end
 	
 private
 	def redirect_to_index(msg = nil)
