@@ -13,6 +13,7 @@ Rails::Initializer.run do |config|
 	config.gem 'jrails'
   config.gem 'haml'
   config.gem 'authlogic'
+  config.gem 'cancan'
 	
   config.time_zone = 'UTC'
 end

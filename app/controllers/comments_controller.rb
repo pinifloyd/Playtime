@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource :product
+  load_and_authorize_resource :comment, :through => :product
+  
   def index
     @comments = Comment.all
     respond_to do |format|
@@ -13,7 +16,6 @@ class CommentsController < ApplicationController
 
   def new
     @product = Product.find(params[:product_id])
-    @comment = @product.comments.new
     respond_to do |format|
       format.html
       format.js { render :partial => '/comments/new' }
@@ -21,12 +23,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def create
     @product = Product.find(params[:product_id])
-    @comment = @product.comments.new(params[:comment])
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(product_path(@comment.product), :notice => 'Comment was successfully created.')}
@@ -39,7 +39,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
@@ -52,7 +51,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to(comments_url) }

@@ -22,6 +22,8 @@
     %br
     = f.password_field :password_confirmation
   %p
+    = f.collection_select :role, User::ROLES, :to_s, :humanize
+  %p
     = f.submit 'Update'
 = link_to 'Show', @user
 = " | "

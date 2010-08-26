@@ -24,4 +24,6 @@
         = ":"
         = f.password_field :password_confirmation, :size => 40
       %div
+        = f.collection_select :role, User::ROLES, :to_s, :humanize
+      %div
         = f.submit "Add user", :class => "submit"
