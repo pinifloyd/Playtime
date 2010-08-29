@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   load_and_authorize_resource 
   
   def index
-    @products = Product.all
+    @search = Product.search(params[:search])
+    @products = @search.all
   end
   
   def show

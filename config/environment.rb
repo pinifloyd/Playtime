@@ -14,6 +14,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml'
   config.gem 'authlogic'
   config.gem 'cancan'
+  config.gem 'searchlogic'
 	
   config.time_zone = 'UTC'
 end

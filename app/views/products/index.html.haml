@@ -1,6 +1,23 @@
 #product-list
   %h1 Listing products
   %table
+    - form_for @search do |f|    
+      %div
+        = f.label "Title"
+        %br
+        = f.text_field :title_like, :size => 24
+      %div
+        = f.label "Price"
+        %br
+        = f.text_field :price_gte, :size => 5
+        = " - "
+        = f.text_field :price_lte, :size => 5
+        = f.submit "Search", :name => nil
+    %div
+      = "Sort by: "
+      = order @search, :by => :title
+      = " | "
+      = order @search, :by => :price
     - @products.each do |product|
       %tr{:class => "#{cycle('list-line-odd', 'list-line-even')}" }
         %td
