@@ -23,9 +23,12 @@ class ProductsController < ApplicationController
   end
   
   def edit
+    @product = Product.find(params[:id])
   end
   
   def update
+    #raise params.to_yaml
+    @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
       flash[:notice] = "Successfully updated product."
       redirect_to @product

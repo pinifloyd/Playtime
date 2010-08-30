@@ -1,0 +1,46 @@
+<h1>Listing of categories</h1>
+<% @categories.each_with_level(@categories.root.self_and_descendants) do |category, level| %>
+  <div style="padding-left:<%= 15*level %>px;">
+    <%= category.name%>
+    <%= " | "%>
+    <%= link_to 'Edit category', edit_category_path(category.id) %>
+    <% if category.products.each do |prod| %>
+      <div style="padding-left:<%= 15*(level+1) %>px;">
+        <%= prod.title %>
+        <%= " | "%>
+        <%= link_to 'Edit product', edit_product_path(prod.id) %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<br/>
+<%= link_to 'New category', new_category_path %>
+<%= " | "%>
+<%= link_to 'Back', root_url %>
+
+
+<br/>
+<script>
+  $(function () {
+	    $("#demo1").jstree({
+        "json_data" : {
+	        "data" : [
+	          {
+	            "data" : "A node",
+	            "children" : [ "Child 1", "Child 2" ]
+            },
+            {
+	            "attr" : { "id" : "li.node.id" },
+	            "data" : {
+	            "title" : "Long format demo",
+	            "attr" : { "href" : "#" }
+            }
+          }
+	      ]
+      },
+	    "plugins" : [ "themes", "json_data" ]
+    });
+  });
+</script>

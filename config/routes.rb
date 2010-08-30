@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :line_items
   map.resources :orders
+  map.resources :categories, :only => [:index, :new, :create, :edit, :update]
   map.resources :products do |product|
     product.resources :comments, :except => [:index, :show]
   end

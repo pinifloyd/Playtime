@@ -1,0 +1,8 @@
+<h1>Edit category</h1>
+<% semantic_form_for @category do |f| %>
+  <%- f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :parent, :include_blank => false %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>
