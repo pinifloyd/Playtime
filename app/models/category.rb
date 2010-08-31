@@ -9,10 +9,10 @@ class Category < ActiveRecord::Base
     self.name
   end
   
-  def to_jstree_json(include_children = true)
-    hash = {:data => name, :children => [], :progressive_render => true}
-    if include_children || children.any?
-      hash[:children] = children.all.collect { |c| c.to_jstree_json(false) }
+  def to_jstree_json(include_children = false)
+    hash = {:data => name, :state => "closed", :progressive_render => true, :correct_state => true, :attr => {:id => id}}
+    if include_children && children.any?
+      hash[:children] = children.all.collect(&:to_jstree_json)      
     end
     hash
   end

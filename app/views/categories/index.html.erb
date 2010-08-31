@@ -28,10 +28,13 @@
     $("#test").jstree({ 
   		"json_data" : {
   			"ajax" : {
-          "url" : '<%= escape_javascript json_data_categories_path %>'
+          "url" : '<%= escape_javascript json_data_categories_path %>',
+          "data" : function (n) {
+            return { id : n.attr ? n.attr("id") : 0 };
+          }
         }
       },
-      "plugins" : [ "themes", "json_data" ]
+      "plugins" : [ "themes", "json_data", "ui", "cookies" ]
     });
   });
 </script>

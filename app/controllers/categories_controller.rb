@@ -1,7 +1,15 @@
 class CategoriesController < ApplicationController
   
   def json_data    
-    json_object = [Category.root.to_jstree_json]
+    category = Category.find_by_id(params[:id])
+    if category
+      # child
+      json_object = category.children.all.collect(&:to_jstree_json)
+    else
+      # root
+      json_object = Category.root.to_jstree_json(true)
+    end
+    category ||= Category.root
     logger.debug json_object.to_yaml
     respond_to do |format|
       format.json { render :json => json_object }
