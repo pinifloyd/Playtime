@@ -1,5 +1,13 @@
 class CategoriesController < ApplicationController
   
+  def json_data    
+    json_object = [Category.root.to_jstree_json]
+    logger.debug json_object.to_yaml
+    respond_to do |format|
+      format.json { render :json => json_object }
+    end
+  end
+  
   def index
     @categories = Category.ascend_by_category_name
   end

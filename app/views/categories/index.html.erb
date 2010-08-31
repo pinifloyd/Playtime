@@ -22,25 +22,16 @@
 
 
 <br/>
-<script>
+<div id="test"></div>
+<script type="text/javascript" class="source">
   $(function () {
-	    $("#demo1").jstree({
-        "json_data" : {
-	        "data" : [
-	          {
-	            "data" : "A node",
-	            "children" : [ "Child 1", "Child 2" ]
-            },
-            {
-	            "attr" : { "id" : "li.node.id" },
-	            "data" : {
-	            "title" : "Long format demo",
-	            "attr" : { "href" : "#" }
-            }
-          }
-	      ]
+    $("#test").jstree({ 
+  		"json_data" : {
+  			"ajax" : {
+          "url" : '<%= escape_javascript json_data_categories_path %>'
+        }
       },
-	    "plugins" : [ "themes", "json_data" ]
+      "plugins" : [ "themes", "json_data" ]
     });
   });
 </script>
