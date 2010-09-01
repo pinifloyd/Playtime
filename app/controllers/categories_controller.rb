@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
     if category
       # child
       json_object = category.children.all.collect(&:to_jstree_json)
+      #json_product = category.products.collect(&:to_jstree_products)
     else
       # root
       json_object = Category.root.to_jstree_json(true)

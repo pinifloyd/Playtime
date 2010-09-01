@@ -27,10 +27,16 @@
   $(function () {
     $("#test")
       .jstree({ 
-        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types" ],
+        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types", "grid" ],
+        "grid" : {
+          "columns" : [
+            { "width" : "200", "header" : "Nodes"},
+            { "cellClass" : "col1", "value" : "price", "width" : "70", "header" : "Price"},
+            { "cellClass" : "col2", "value" : "size", "width" : "50", "header" : "Size" }
+          ]
+        },
         "types" : {
           "max_depth" : "3",
-          
           "valid_children" : ["root"],
             "types" : {
               "default" : {
