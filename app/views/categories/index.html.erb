@@ -25,16 +25,30 @@
 <div id="test"></div>
 <script type="text/javascript" class="source">
   $(function () {
-    $("#test").jstree({ 
-  		"json_data" : {
-  			"ajax" : {
-          "url" : '<%= escape_javascript json_data_categories_path %>',
-          "data" : function (n) {
-            return { id : n.attr ? n.attr("id") : 0 };
+    $("#test")
+      .jstree({ 
+        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd" ],
+        "json_data" : {
+      		"ajax" : {
+            "url" : '<%= escape_javascript json_data_categories_path %>',
+            "data" : function (n) {
+              return { id : n.attr ? n.attr("id") : 0 };
+            }
           }
         }
-      },
-      "plugins" : [ "themes", "json_data", "ui", "cookies" ]
-    });
+      })
+      .bind("move_node.jstree", function (e, data) {
+        data.rslt.o.each(function (i) {
+          $.ajax({
+            url: '<%= escape_javascript move_tree_node_categories_path %>',
+            data: {
+              "id" : $(this).attr("id"),
+              "ref" : data.rslt.np.attr("id"),
+              "position" : data.rslt.cp + i
+              },
+              
+          });
+        });
+      });
   });
 </script>

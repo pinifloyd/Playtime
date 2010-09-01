@@ -15,5 +15,5 @@ class Category < ActiveRecord::Base
       hash[:children] = children.all.collect(&:to_jstree_json)      
     end
     hash
-  end
+  end  
 end
