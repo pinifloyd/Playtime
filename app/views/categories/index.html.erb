@@ -27,7 +27,25 @@
   $(function () {
     $("#test")
       .jstree({ 
-        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd" ],
+        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types" ],
+        "types" : {
+          "max_depth" : "3",
+          
+          "valid_children" : ["root"],
+            "types" : {
+              "default" : {
+                "valid_children" : "default",
+                "max_children" : "2",
+              },
+              "root" : {
+                "valid_children" : ["default"],
+                "icon" : {
+                  "image" : "http://static.jstree.com/v.1.0rc/_docs/_drive.png"
+                },
+                "move_node" : false
+              }
+            }
+        },
         "json_data" : {
       		"ajax" : {
             "url" : '<%= escape_javascript json_data_categories_path %>',

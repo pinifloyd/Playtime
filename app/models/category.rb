@@ -10,7 +10,11 @@ class Category < ActiveRecord::Base
   end
   
   def to_jstree_json(include_children = false)
-    hash = {:data => name, :state => "closed", :progressive_render => true, :correct_state => true, :attr => {:id => id}}
+    if root?
+      hash = {:data => name, :state => "closed", :progressive_render => true, :correct_state => true, :attr => {:id => id, :rel => "root"}}
+    else
+      hash = {:data => name, :state => "closed", :progressive_render => true, :correct_state => true, :attr => {:id => id}}
+    end
     if include_children && children.any?
       hash[:children] = children.all.collect(&:to_jstree_json)      
     end
