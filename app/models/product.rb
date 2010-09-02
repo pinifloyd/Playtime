@@ -21,6 +21,12 @@ class Product < ActiveRecord::Base
 	has_many :line_items
   has_many :orders, :through => :line_items
   belongs_to :category
+  
+  def to_jstree_products
+    hash = {:data => title, :attr => {:category_id => category_id, :p_id => id, :rel => "product"}}
+    hash
+  end
+  
 protected
 	def price_must_be_at_least_a_cent
 		errors.add(:price, 'should be at least 0.01') if price.nil? || price < 0.01

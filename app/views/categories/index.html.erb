@@ -40,13 +40,22 @@
           "valid_children" : ["root"],
             "types" : {
               "default" : {
-                "valid_children" : "default",
+                "valid_children" : ["default", "product"],
                 "max_children" : "2",
+                "icon" : {
+                  "image" : "images/folder.png"
+                },
+              },
+              "product" : {
+                "valid_children" : "none",
+                "icon" : {
+                  "image" : "images/file.png"
+                }
               },
               "root" : {
-                "valid_children" : ["default"],
+                "valid_children" : ["default", "product"],
                 "icon" : {
-                  "image" : "http://static.jstree.com/v.1.0rc/_docs/_drive.png"
+                  "image" : "images/drive.png"
                 },
                 "move_node" : false
               }
@@ -68,6 +77,8 @@
             data: {
               "id" : $(this).attr("id"),
               "ref" : data.rslt.np.attr("id"),
+              "category_id" : $(this).attr("category_id"),
+              "p_id" : $(this).attr("p_id"),
               "position" : data.rslt.cp + i
               },
               
