@@ -27,13 +27,26 @@
   $(function () {
     $("#test")
       .jstree({ 
-        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types", "grid" ],
+        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types", "grid", "sort" ],
         "grid" : {
           "columns" : [
             { "width" : "200", "header" : "Nodes"},
             { "cellClass" : "col1", "value" : "price", "width" : "70", "header" : "Price"},
             { "cellClass" : "col2", "value" : "size", "width" : "50", "header" : "Size" }
           ]
+        },
+        "sort" : function (a, b) {
+          var s1 = a.sdf + a.adsf;
+          var s2 = b.sdf + b.asdf;
+          if ( this._get_type(a) && this._get_type(b) == "product") {
+            if ( this.get_text(a) < this.get_text(b) ) {
+              return 1;
+              } else {
+                return -1;
+              }
+          } else {
+            return -1;
+          }
         },
         "types" : {
           "max_depth" : "3",
