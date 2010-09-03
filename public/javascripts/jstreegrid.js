@@ -28,7 +28,7 @@ this.data.grid.treeClass = "jstree-grid";
 this.data.grid.columnWidth = s.width;
 
 // set up the classes we need
-$("<link/>").attr({rel: "stylesheet",type: "text/css", href: "treegrid.css"}).appendTo($("head",$(document)));
+//$("<link/>").attr({rel: "stylesheet",type: "text/css", href: "/stylesheets/treegrid.css"}).appendTo($("head",$(document)));
 
 this.get_container().bind("open_node.jstree create_node.jstree clean_node.jstree", $.proxy(function (e, data) {
 this._prepare_grid(data.rslt.obj);
