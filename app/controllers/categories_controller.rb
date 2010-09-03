@@ -5,7 +5,6 @@ class CategoriesController < ApplicationController
     if category
       # child
       json_object = category.children.all.collect(&:to_jstree_json)
-      #json_product = category.products.collect(&:to_jstree_products)
     else
       # root
       json_object = Category.root.to_jstree_json(true)
@@ -34,14 +33,15 @@ class CategoriesController < ApplicationController
         format.json { render :json => json_object }
       end
     else
-      category = Category.find(params[:id])
+      category = Category.find_by_id(params[:id])
       if category
         parent = Category.find(params[:ref])
+        params[:position] = 0
         if parent.leaf?
           category.parent_id = params[:ref]
           category.save
         else
-          category.move_to_left_of(parent.children[params[:position].to_i])
+          category.move_to_left_of(parent.children[params[:position]])
         end      
         json_object = category.children.all.collect(&:to_jstree_json)
       else

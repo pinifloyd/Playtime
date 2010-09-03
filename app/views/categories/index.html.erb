@@ -27,7 +27,18 @@
   $(function () {
     $("#test")
       .jstree({ 
-        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types", "grid", "sort" ],
+        "plugins" : [ "themes", "json_data", "ui", "cookies", "dnd", "types", "grid", "sort", "crrm" ],
+        "crrm" : {
+          "move" : {
+            "check_move" : function(m) {
+              var p = this._get_parent(m.o);
+              p = p == -1 ? this.get_container() : p;
+              if (p === m.np) return true;
+              if(p[0] && m.np[0] && p[0] != m.np[0]) return true;
+              return false;                
+            }
+          }
+        },
         "grid" : {
           "columns" : [
             { "width" : "200", "header" : "Nodes"},
@@ -36,20 +47,12 @@
           ]
         },
         "sort" : function (a, b) {
-          var s1 = a.sdf + a.adsf;
-          var s2 = b.sdf + b.asdf;
-          if ( this._get_type(a) && this._get_type(b) == "product") {
-            if ( this.get_text(a) < this.get_text(b) ) {
-              return 1;
-              } else {
-                return -1;
-              }
-          } else {
-            return -1;
-          }
+          var s1 = this._get_type(a) + this.get_text(a);
+          var s2 = this._get_type(b) + this.get_text(b);
+          return s1 > s2 ? 1 : -1;
         },
         "types" : {
-          "max_depth" : "3",
+          "max_depth" : "10",
           "valid_children" : ["root"],
             "types" : {
               "default" : {
@@ -70,6 +73,7 @@
                 "icon" : {
                   "image" : "images/drive.png"
                 },
+                "start_drag" : false,
                 "move_node" : false
               }
             }
