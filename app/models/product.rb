@@ -2,9 +2,9 @@ class Product < ActiveRecord::Base
   attr_accessible :title, :description, :price, :picture, :category_id
 	
 	validates_presence_of :title, :description
-	validates_length_of :title, :maximum => 10, :message => "has more than 10 simbols"
-	validates_numericality_of :price
-	validate :price_must_be_at_least_a_cent
+	validates_length_of :title, :maximum => 10
+	validates_numericality_of :price, :greater_than => 0.01
+	#validate :price_must_be_at_least_a_cent
 	validates_uniqueness_of :title
 	
 	has_attached_file :picture, :styles => { :small => "100x100>" }

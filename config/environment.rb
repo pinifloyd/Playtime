@@ -7,7 +7,7 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-	config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source => 'http://gems.github.com'
+	config.gem 'formtastic'
 	config.gem 'paperclip'
 	config.gem 'awesome_nested_set'
 	config.gem 'jrails'
@@ -16,5 +16,6 @@ Rails::Initializer.run do |config|
   config.gem 'cancan'
   config.gem 'searchlogic'
 	
+  config.i18n.default_locale = :en
   config.time_zone = 'UTC'
 end

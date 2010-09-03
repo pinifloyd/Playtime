@@ -1,0 +1,18 @@
+ru:
+  formtastic:
+    actions:
+      product:
+        create: "Создать"
+    titles:
+      product_details: "Поля продукта"
+    labels:
+      product:
+        title: "Название: "
+        description: "Описание"
+        price: "Цена"
+        picture: "Картинка"
+        category: "Категория"
+    hints:
+      product:
+        title: "Должно быть уникальным"
+        price: "Не меньше $0.01"

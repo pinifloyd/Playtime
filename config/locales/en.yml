@@ -2,4 +2,25 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  formtastic:
+    actions:
+      product:
+        create: "Create"
+    titles:
+      product_details: "Product's field"
+    labels:
+      product:
+        title: "Ttttitle: "
+        description: "Descr-on"
+        price: "Pr"
+        picture: "Pic-re"
+        category: "Cat-y"
+    hints:
+      product:
+        title: "Uniqe"
+        price: "> $0.01"
+  activerecord:    
+    errors:
+      messages:
+        blank: "не пустой"
+        greater_than: "Слишком мало"

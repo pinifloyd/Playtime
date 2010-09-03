@@ -1,8 +1,8 @@
 - semantic_form_for @product, :html => { :multipart => true } do |f|
   - f.inputs do
-    = f.input :title, :hint => "Must be unique!", :input_html => { :style => 'width: 40%' }
+    = f.input :title, :input_html => { :style => 'width: 40%' }
     = f.input :description, :input_html => { :style => 'width: 40%', :rows => 3 }
-    = f.input :price, :hint => "Should be at least 0.01", :input_html => { :style => 'width: 40%' }
+    = f.input :price, :input_html => { :style => 'width: 40%' }
     = f.input :picture
     = f.input :category, :include_blank => false
   = f.buttons
